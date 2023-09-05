@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: none;
+  color: darkgrey;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.nav-bar {
+  position: sticky;
+  box-shadow: rgb(0 0 0 / 12%) 0 1px 8px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  background: url('/src/assets/sofa-logo.png');
+  background-size: 47px;
+  height: 30px;
+  width: 46px;
+}
+
+.container, .user-container, .logo {
+  margin: 20px;
+}
