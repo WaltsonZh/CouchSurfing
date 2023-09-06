@@ -7,6 +7,10 @@
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
+body {
+  height: 100dvh;
+}
+
 .nav-bar {
   position: sticky;
   box-shadow: rgb(0 0 0 / 12%) 0 1px 8px;
@@ -21,6 +25,40 @@
   width: 46px;
 }
 
-.container, .user-container, .logo {
+.user-container,
+.logo {
   margin: 20px;
+}
+
+.container {
+  display: grid;
+  margin: 36px;
+  gap: 36px;
+  place-items: center;
+}
+
+.properties {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  display: grid;
+  width: fit-content;
+  margin: 5px;
+  border-radius: 20px;
+  padding: 10px;
+  box-shadow: rgb(0 0 0 / 12%) 0 1px 8px;
+}
+
+.footer {
+  width: 100%;
+  height: 90px;
+  color: white;
+  background: lightcoral;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  top: 100%;
 }
