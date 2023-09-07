@@ -3,7 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   border: none;
-  color: darkgrey;
+  color: rgb(169, 169, 169);
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
@@ -32,7 +32,7 @@ body {
 
 .container {
   display: grid;
-  margin: 36px;
+  margin: 20px;
   gap: 24px;
   place-items: center;
   position: relative;
@@ -41,6 +41,7 @@ body {
 .properties {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .card {
@@ -59,8 +60,8 @@ body {
 .footer {
   width: 100%;
   height: 90px;
-  color: white;
-  background: lightcoral;
+  color: rgb(255, 255, 255);
+  background: rgb(240, 128, 128);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -69,23 +70,28 @@ body {
 }
 
 .container button {
-  position: absolute;
-  top: 55%;
-  height: 2em;
-  width: 50%;
+  padding: 1em;
+  margin-bottom: -2.4em;
+  background: rgb(0, 128, 0);
+  color: rgb(255, 255, 255);
+  border-radius: 5px;
+}
+
+.container button:hover {
+  background: rgb(184, 134, 11);
 }
 
 .review-card {
-    padding: 10px;
+  padding: 10px;
 }
 
 .reviews {
-    display: flex;
-    padding: 10px;
+  display: flex;
+  padding: 10px;
 }
 
 .break {
-    height: 1px;
-    width: 90%;
-    background-color: coral;
+  height: 1px;
+  width: 90%;
+  background-color: rgb(255, 127, 80);
 }
