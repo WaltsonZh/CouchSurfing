@@ -1,18 +1,16 @@
-const returningUserDisplay = document.querySelector('#returning-user') as HTMLSpanElement
-const userNameDisplay = document.querySelector('#user') as HTMLSpanElement
-const reviewTotalDisplay = document.querySelector('#reviews') as HTMLTitleElement
+import { MainProperty } from './classes.js'
+import { Loyalty, UserPermissions } from './enums.js'
+import { Review, Property } from './interfaces.js'
+import { populateUser, showDetails, showReviewTotal, addReviews } from './utils.js'
+
 const propertyContainer = document.querySelector('.properties') as HTMLDivElement
 const footer = document.querySelector('.footer') as HTMLDivElement
+const button = document.querySelector('button') as HTMLButtonElement
+const mainImageContainer = document.querySelector('.main-image') as HTMLDivElement
 
-let isLoggedIn: boolean
+// let isLoggedIn: boolean
 
-enum Loyalty {
-  GOLD_USER,
-  SILVER_USER,
-  BRONZE_USER,
-}
-
-const reviews: any[] = [
+const reviews: Review[] = [
   {
     name: 'Sheia',
     stars: 5,
@@ -30,26 +28,9 @@ const reviews: any[] = [
     stars: 4,
     loyaltyUser: Loyalty.SILVER_USER,
     date: '27-03-2021',
-    description: 'Great hosts, location was a bit further than said.',
+    // description: 'Great hosts, location was a bit further than said.',
   },
 ]
-
-function showReviewTotal(value: number, reviewer: string, isLoyalty: Loyalty) {
-  const icon = isLoyalty === Loyalty.GOLD_USER ? '⭐' : ''
-  reviewTotalDisplay.textContent = value.toString() + ' review' + makeMultiple(value) + ' | Last reviewed by ' + reviewer + icon
-}
-
-function populateUser(isReturning: boolean, userName: string) {
-  if (isReturning) {
-    returningUserDisplay.innerHTML = 'back'
-  }
-  userNameDisplay.innerHTML = userName
-}
-
-enum UserPermissions {
-  ADMIN = 'ADMIN',
-  READ_ONLY = 'READ_ONLY',
-}
 
 const you = {
   firstName: 'Bobby',
@@ -60,21 +41,7 @@ const you = {
   stayedAt: ['florida-home', 'oman-flat', 'tokyo-bungalow'],
 }
 
-type Price = 25 | 30 | 45
-type Country = 'Colombia' | 'Poland' | 'United Kingdom'
-const properties: {
-  image: string
-  title: string
-  price: Price
-  location: {
-    firstLine: string
-    city: string
-    code: number
-    country: Country
-  }
-  contact: [number, string]
-  isAvailable: boolean
-}[] = [
+const properties: Property[] = [
   {
     image: '/src/assets/colombia-property.jpg',
     title: 'Colombian Shack',
@@ -114,21 +81,26 @@ const properties: {
     contact: [+1123495082908, 'andyluger@aol.com'],
     isAvailable: true,
   },
+  {
+    image: '/src/assets/malaysian-hotel.jpeg',
+    title: 'Malia Hotel',
+    price: 35,
+    location: {
+      firstLine: 'room 4',
+      city: 'Malia',
+      code: 45334,
+      country: 'Malaysia',
+    },
+    contact: [+60349822083, 'lee34@gmail.com'],
+    isAvailable: false,
+  },
 ]
 
 showReviewTotal(reviews.length, reviews[0].name, reviews[0].loyaltyUser)
 
 populateUser(you.isReturning, you.firstName)
 
-isLoggedIn = false
-
-function showDetails(authorityStatus: boolean | UserPermissions, element: HTMLDivElement, price: number) {
-  if (authorityStatus) {
-    const priceDisplay = document.createElement('div')
-    priceDisplay.innerHTML = price.toString() + '/night'
-    element.appendChild(priceDisplay)
-  }
-}
+// isLoggedIn = false
 
 for (let i = 0; i < properties.length; i++) {
   const card = document.createElement('div')
@@ -144,8 +116,19 @@ for (let i = 0; i < properties.length; i++) {
 let currentLocation: [string, string, number] = ['London', '11:35', 17]
 footer.innerHTML = `${currentLocation[0]} ${currentLocation[1]} ${currentLocation[2]}&deg;`
 
-function makeMultiple(value: number): string {
-  if (value > 1 || value == 0) {
-    return 's'
-  } else return ''
-}
+button.addEventListener('click', () => addReviews(reviews))
+
+let yourMainProperty = new MainProperty(
+  '/src/assets/italian-property.jpg',
+  'Italian House',
+  [{
+    name: 'Olive',
+    stars: 5,
+    loyaltyUser: Loyalty.GOLD_USER,
+    date: '12-04-2021'
+  }]
+)
+
+const image = document.createElement('img')
+image.setAttribute('src', yourMainProperty.src)
+mainImageContainer.appendChild(image)

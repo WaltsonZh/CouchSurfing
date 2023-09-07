@@ -33,8 +33,9 @@ body {
 .container {
   display: grid;
   margin: 36px;
-  gap: 36px;
+  gap: 24px;
   place-items: center;
+  position: relative;
 }
 
 .properties {
@@ -44,11 +45,15 @@ body {
 
 .card {
   display: grid;
-  width: fit-content;
+  width: 170px;
   margin: 5px;
   border-radius: 20px;
   padding: 10px;
   box-shadow: rgb(0 0 0 / 12%) 0 1px 8px;
+}
+
+.card img {
+  width: 100%;
 }
 
 .footer {
@@ -61,4 +66,26 @@ body {
   align-items: center;
   position: sticky;
   top: 100%;
+}
+
+.container button {
+  position: absolute;
+  top: 55%;
+  height: 2em;
+  width: 50%;
+}
+
+.review-card {
+    padding: 10px;
+}
+
+.reviews {
+    display: flex;
+    padding: 10px;
+}
+
+.break {
+    height: 1px;
+    width: 90%;
+    background-color: coral;
 }
