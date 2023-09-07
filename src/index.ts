@@ -36,7 +36,7 @@ const reviews: any[] = [
 
 function showReviewTotal(value: number, reviewer: string, isLoyalty: Loyalty) {
   const icon = isLoyalty === Loyalty.GOLD_USER ? '⭐' : ''
-  reviewTotalDisplay.textContent = 'review total ' + value.toString() + ' | recent user: ' + reviewer + icon
+  reviewTotalDisplay.textContent = value.toString() + ' review' + makeMultiple(value) + ' | Last reviewed by ' + reviewer + icon
 }
 
 function populateUser(isReturning: boolean, userName: string) {
@@ -143,3 +143,9 @@ for (let i = 0; i < properties.length; i++) {
 
 let currentLocation: [string, string, number] = ['London', '11:35', 17]
 footer.innerHTML = `${currentLocation[0]} ${currentLocation[1]} ${currentLocation[2]}&deg;`
+
+function makeMultiple(value: number): string {
+  if (value > 1 || value == 0) {
+    return 's'
+  } else return ''
+}
